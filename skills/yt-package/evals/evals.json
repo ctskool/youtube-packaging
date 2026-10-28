@@ -1,0 +1,78 @@
+{
+  "skill_name": "yt-package",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Package my next video: I put Gemini 4 Argon inside Claude Code's harness and ran it against Opus 5.5 on the same tasks. Every big channel already did a first look at Argon.",
+      "expected_output": "A full package. It has an idea gate, live channel data, a 14-day collision scan showing the saturated first-look lane, 3 thumbnail concepts, ~20 scored titles, 3 Test & Compare packages that differ in reason-to-click, a cold open and an expected-rank test plan.",
+      "files": [],
+      "expectations": [
+        "Opens with an idea gate: a one-sentence so-what (who, what changes, why now) and exactly one dominant emotion",
+        "Ran channel_performance.py and channel_baseline.py, or reported their error, and did not invent channel numbers",
+        "States that the baseline uses only uploads from 2026-08-24 onward and that engaged views and CTR are Studio-only",
+        "Ran a collision scan restricted to the last 14 days and names saturated frames such as Argon first-look titles",
+        "Presents 3 thumbnail concepts before any title list, and the concepts differ in kind (visual idea and feeling), not just text or color",
+        "Every thumbnail concept has 0-4 words of text (or none) that does not repeat its title, plus a top-half / TV description",
+        "Produces roughly 20 titles (15-25), each with a character count",
+        "Scores titles on the 8-criterion 40-point rubric with a hype penalty, and scores a Studio-style baseline that finalists beat",
+        "Delivers exactly 3 packages whose reasons to click are different viewer questions, with variant 1 marked as the safest",
+        "No finalist title contains NEW, changes everything, game changer, a bare Just, a confession frame, or a trailing question mark",
+        "No finalist title exceeds 60 characters without an explicit flag",
+        "Includes a word-for-word cold open of 15 seconds or less that pays off all 3 packages",
+        "Test plan uses an expected rank (1-10) and the expected-rank swap rule; says to touch nothing in the first ~24h",
+        "Does not use the retired rules: no 44-char / hard-cap-55 / mobile-70% rule, no CTR decision tree, no 5% CTR floor, no ALL-CAPS 2-5-word thumbnail rule"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "what should the thumbnail be for my video about hooking Claude Code up to my email so it auto-responds to clients?",
+      "expected_output": "The skill triggers on a thumbnail-only ask and still runs thumbnail-first: 3 concepts that differ in kind, each paired with a completing title, then packages and a test plan.",
+      "files": [],
+      "expectations": [
+        "The packaging skill handles the request even though only a thumbnail was asked for",
+        "Gives 3 thumbnail concepts from different families (e.g. object/metaphor, proof/before-after, person/tension)",
+        "Each concept passes the TV top-half test and uses 0-4 words of text or none",
+        "No concept is a raw UI crop or a dense diagram",
+        "Each concept is paired with a title that completes it instead of repeating the thumbnail text",
+        "Offers image mockups at most; does not generate images unasked"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My video \"You're Using Jev + Claude Wrong\" is flopping, it's 12 days old. Help me repackage it.",
+      "expected_output": "Re-package path: diagnosis against the post-Aug-24 baseline and the retired templates, new thumbnail concepts first, alternates, and a re-package test plan.",
+      "files": [],
+      "expectations": [
+        "Pulls the video's numbers and the post-Aug-24 baseline (or reports a script failure) instead of guessing",
+        "Identifies 'You're Using X Wrong' as a retired template that only works on the week's single hottest topic",
+        "Recommends changing the thumbnail concept first (a thumbnail-only Test & Compare), then titles",
+        "Notes that editing mid-test stops a Test & Compare run",
+        "New packages differ in reason to click and avoid hype words and confession framing",
+        "Does not use a raw-CTR threshold or a 5% CTR floor to justify the swap"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "give me title ideas for my video: Claude Code hooks explained",
+      "expected_output": "The idea gate catches the label/explainer framing and proposes sharper angles before packaging.",
+      "files": [],
+      "expectations": [
+        "The idea gate flags 'explained' as a label (explainer titles have an 18.8K median on the channel) rather than a reason to click",
+        "Proposes 1-2 sharper angles (a concrete use, a test, a cost or a catch) before or alongside the packages",
+        "No finalist title contains Explained, Complete Guide, Ultimate Guide or Everything You Need to Know",
+        "Thumbnail concepts still come before titles"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "/yt-titles new Claude Code hooks feature that automates my entire dev workflow",
+      "expected_output": "The legacy /yt-titles alias routes into yt-package and produces the thumbnail-first package.",
+      "files": [],
+      "expectations": [
+        "The /yt-titles command runs the yt-package procedure (idea gate, data, collisions, thumbnails first)",
+        "Output includes 3 packages and an expected-rank test plan, not a one-title-per-framing-bucket list",
+        "No 'Messy / I was wrong' bucket appears"
+      ]
+    }
+  ]
+}
